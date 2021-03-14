@@ -7,11 +7,13 @@ import pyttsx3
 import json
 import core
 from nlu.classifier import classify
+
 # Síntese de fala
 engine = pyttsx3.init()
 
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[-2].id)
+
 
 def speak(text):
     engine.say(text)
@@ -19,7 +21,6 @@ def speak(text):
 
 
 # Reconhecimento de fala
-
 model = Model('model')
 rec = KaldiRecognizer(model, 16000)
 
@@ -43,6 +44,9 @@ while True:
             entity = classify(text)
 
             if entity == 'time\getTime':
+                speak(core.SystemInfo.get_time())
+
+            if entity == 'amor\getAmor':
                 speak(core.SystemInfo.get_time())
 
             print('Text: {}  Entity: {}'.format(text, entity))

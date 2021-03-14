@@ -38,4 +38,12 @@ commands:
   - commmand:
     input:  Abra youtube
     entity: open
-    action: 
+    action:
+  - commmand:
+    input: Quem é o amor da minha vida?
+    entity: amor
+    action: getAmor
+  - commmand:
+    input: Amor da minha vida
+    entity: amor
+    action: getAmor
