@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from vosk import Model, KaldiRecognizer
-import os
 import pyaudio
 import pyttsx3
 import json
