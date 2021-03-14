@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  python-vosk:
+    container_name: python-vosk
+    build:
+      context: .
+      dockerfile: docker/python38/Dockerfile
+    environment:
+      TZ: "America/Sao_Paulo"
+    volumes:
+      - ./app:/application
+    entrypoint: python main.py
