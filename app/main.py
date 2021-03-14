@@ -7,11 +7,13 @@ import pyttsx3
 import json
 import core
 from nlu.classifier import classify
+
 # Síntese de fala
 engine = pyttsx3.init()
 
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[-2].id)
+
 
 def speak(text):
     engine.say(text)
@@ -19,7 +21,7 @@ def speak(text):
 
 
 def evaluate(text):
-    #Reconhecer entidade do texto. 
+    # Reconhecer entidade do texto. 
     entity = classify(text)
     if entity == 'time|getTime':
         speak(core.SystemInfo.get_time())
@@ -35,6 +37,7 @@ def evaluate(text):
         os.system('"C:/Program Files/Google/Chrome/Application/chrome.exe"')
 
     print('Text: {}  Entity: {}'.format(text, entity))
+
 
 # Reconhecimento de fala
 
@@ -57,5 +60,3 @@ while True:
         if result is not None:
             text = result['text']
             evaluate(text)
-
-            
