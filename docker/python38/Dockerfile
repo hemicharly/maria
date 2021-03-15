@@ -11,11 +11,19 @@ RUN apt-get update && \
         libportaudiocpp0 && \
         apt-get clean
 
+RUN apt-get install -y software-properties-common
 
-COPY  docker/python38/requirements.txt requirements.txt
+RUN apt-get update && \
+    apt-get install -y \
+        alsa-utils
+
+COPY docker/python38/requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
+RUN apt-get install -y \
+    espeak \
+    libespeak-dev
 
 ENV DEVELOPER developer
 RUN adduser --disabled-password --gecos '' ${DEVELOPER}
