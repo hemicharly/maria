@@ -10,6 +10,7 @@ services:
       TZ: "America/Sao_Paulo"
     volumes:
       - ./app:/application
+      - /tmp/.X11-unix:/tmp/.X11-unix
     devices:
       - /dev/snd:/dev/snd
     entrypoint: python main.py
